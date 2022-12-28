@@ -15,7 +15,7 @@ jaq_nvim.setup {
       typescript = "deno run %",
       javascript = "node %",
       -- markdown = "glow %",
-      python = "python %",
+      python = "python3 %",
       -- rust = "rustc % && ./$fileBase && rm $fileBase",
       rust = "cargo run",
       cpp = "g++ % -o $fileBase && ./$fileBase",
@@ -81,6 +81,6 @@ jaq_nvim.setup {
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
-keymap("n", "<m-r>", ":silent only | Jaq<cr>", opts)
+keymap("n", "<S-r>", ":silent only | Jaq<cr>", opts)
 return M
 

@@ -28,14 +28,13 @@ lvim.builtin.cmp.formatting.source_names = {
   luasnip = "",
   buffer = "",
   tmux = "",
-  copilot = "",
   treesitter = "",
 }
 -- lvim.builtin.autopairs.active = false
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
-vim.opt.showtabline = 0
+vim.opt.showtabline = 2
 
 local options = {
   backup = false, -- creates a backup file
@@ -49,7 +48,7 @@ local options = {
   mouse = "a", -- allow the mouse to be used in neovim
   pumheight = 10, -- pop up menu height
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 0, -- always show tabs
+  showtabline = 2, -- always show tabs
   smartcase = true, -- smart case
   smartindent = true, -- make indenting smarter again
   splitbelow = true, -- force all horizontal splits to go below current window
