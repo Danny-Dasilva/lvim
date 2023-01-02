@@ -1,3 +1,8 @@
+
+lvim.builtin.terminal.active = true
+
+local opts = {}
+require("lvim.lsp.manager").setup("debugpy", opts)
 -- Set a formatter.
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -35,3 +40,27 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     }
   end,
 })
+-- Additional Plugins
+lvim.plugins = {
+  -- You can switch between vritual environmnts.
+  "AckslD/swenv.nvim",
+  "mfussenegger/nvim-dap-python",
+  {
+    -- You can generate docstrings automatically.
+    "danymat/neogen",
+    config = function()
+      require("neogen").setup {
+        enabled = true,
+        languages = {
+          python = {
+            template = {
+              annotation_convention = "numpydoc",
+            },
+          },
+        },
+      }
+    end,
+  },
+  -- You can run blocks of code like jupyter notebook.
+  { "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" },
+}
