@@ -23,9 +23,12 @@ lvim.colorscheme = "lunar"
 lvim.leader = "\\"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-/>"] = "<Plug>(comment_toggle_linewise_current)"
+lvim.keys.visual_mode["<C-/>"] = "<Plug>(comment_toggle_linewise_visual)"
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
+
 
 keymap("n", "<C-b>", "* <Cmd>NvimTreeToggle<CR>", opts)
 --Remap splits navigation to just SHIFT+ hjkl
@@ -33,7 +36,6 @@ keymap("n", "<S-h>", "<C-w>h", opts)
 keymap("n", "<S-j>", "<C-w>j", opts)
 keymap("n", "<S-k>", "<C-w>k", opts)
 keymap("n", "<S-l>", "<C-w>l", opts)
-
 -- Remap swap window to CTRL + hjkl
 keymap("n", "<C-H>", "<C-w>H", opts)
 keymap("n", "<C-J>", "<C-w>J", opts)
@@ -43,6 +45,8 @@ keymap("n", "<C-L>", "<C-w>L", opts)
 keymap("n", "<tab>", "<c-6>", opts)
 
 
+--This unsets the "last search pattern" register by hitting enter
+keymap("n", "<CR>", ":noh <CR><CR>", opts)
 -- Resize with arrows
 keymap("n", "<S-Up>", ":resize -2<CR>", opts)
 keymap("n", "<S-Down>", ":resize +2<CR>", opts)
