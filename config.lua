@@ -14,6 +14,7 @@ reload "user.plugins"
 
 reload "user.lsp"
 reload "user.smoothie"
+reload "user.git"
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
@@ -357,7 +358,7 @@ end
     return
   end
 
-
+--test
 lvim.builtin.telescope.defaults.pickers = get_pickers(actions)
 lvim.builtin.telescope.defaults.pickers = get_pickers(actions)
 lvim.builtin.telescope.pickers = get_pickers(actions)
