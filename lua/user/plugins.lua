@@ -5,6 +5,7 @@ lvim.plugins = {
   "p00f/nvim-ts-rainbow",
   "mfussenegger/nvim-jdtls",
   -- "karb94/neoscroll.nvim",
+  "danymat/neogen",
   "folke/trouble.nvim",
   "opalmay/vim-smoothie",
   "windwp/nvim-ts-autotag",

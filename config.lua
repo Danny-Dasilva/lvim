@@ -70,6 +70,8 @@ vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
 -- replace a word with yanked text
 keymap("n", "rw","viwpyiw", opts)
+-- CTRL A for select all
+keymap("n", "<C-a>", "ggVG", opts)
 -- replace till the end of line with yanked text
 -- keymap("n", "rl", 'Pl"_D', opts)
 --This unsets the "last search pattern" register by hitting enter
@@ -366,6 +368,26 @@ lvim.builtin.which_key.mappings["f"] = {
   v = { "<cmd>vsplit <cr>", "Split Right" },
   h = { "<cmd>sp <cr>", "Split Down" },
 }
+
+keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope grep_string<cr>", "Find String" }
+-- lvim.builtin.which_key.mappings["f"] = {
+--   name = "Find",
+--   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+--   c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+--   f = { "<cmd>Telescope find_files<cr>", "Find files" },
+--   t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+--   s = { "<cmd>Telescope grep_string<cr>", "Find String" },
+--   h = { "<cmd>Telescope help_tags<cr>", "Help" },
+--   H = { "<cmd>Telescope highlights<cr>", "Highlights" },
+--   i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
+--   l = { "<cmd>Telescope resume<cr>", "Last Search" },
+--   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+--   r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+--   R = { "<cmd>Telescope registers<cr>", "Registers" },
+--   k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+--   C = { "<cmd>Telescope commands<cr>", "Commands" },
+-- }
 
 lvim.builtin.which_key.mappings["g"] = {
   name = "Git",
