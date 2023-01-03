@@ -75,8 +75,8 @@ keymap("n", "rw","viwpyiw", opts)
 --This unsets the "last search pattern" register by hitting enter
 keymap("n", "<CR>", ":noh <CR><CR>", opts)
 
-
-
+-- Open Git DiffView 
+keymap("n", "<C-g>","<cmd>DiffviewOpen<cr>", opts)
 
 -- keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
@@ -298,14 +298,11 @@ lvim.builtin.telescope.defaults.layout_config = {
 local function get_pickers(actions)
   return {
     find_files = {
-      -- theme = "dropdown",
       hidden = true,
-      -- previewer = false,
     },
     live_grep = {
       --@usage don't include the filename in the search results
       only_sort_text = true,
-      theme = "dropdown",
     },
     grep_string = {
       only_sort_text = true,
@@ -366,5 +363,42 @@ lvim.builtin.which_key.mappings["f"] = {
   name = "File",
   c = { "<cmd>lua require('user.functions').copy_path()<cr>", "Copy Path" },
   C = { "<cmd>lua require('user.functions').copy_relative_path()<cr>", "Copy Relative Path" },
+  v = { "<cmd>vsplit <cr>", "Split Right" },
+  h = { "<cmd>sp <cr>", "Split Down" },
+}
+
+lvim.builtin.which_key.mappings["g"] = {
+  name = "Git",
+  -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
+  g = { "<cmd>DiffviewOpen<cr>", "DiffView" },
+  j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+  k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+  l = { "<cmd>GitBlameToggle<cr>", "Blame" },
+  p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+  r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+  R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+  s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+  u = {
+    "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+    "Undo Stage Hunk",
+  },
+  n = { ":!git checkout -b ", "Checkout New Branch" },
+  o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+  b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+  c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+  f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
+  d = {
+    "<cmd>Gitsigns diffthis HEAD<cr>",
+    "Diff",
+  },
+  G = {
+    name = "Gist",
+    a = { "<cmd>Gist -b -a<cr>", "Create Anon" },
+    d = { "<cmd>Gist -d<cr>", "Delete" },
+    f = { "<cmd>Gist -f<cr>", "Fork" },
+    g = { "<cmd>Gist -b<cr>", "Create" },
+    l = { "<cmd>Gist -l<cr>", "List" },
+    p = { "<cmd>Gist -b -p<cr>", "Create Private" },
+  },
 }
 
