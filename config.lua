@@ -1,3 +1,5 @@
+
+
 --[[
 lvim is the global options object
 
@@ -45,8 +47,7 @@ keymap("n", "<C-L>", "<C-w>L", opts)
 keymap("n", "<tab>", "<c-6>", opts)
 
 
---This unsets the "last search pattern" register by hitting enter
-keymap("n", "<CR>", ":noh <CR><CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<S-Up>", ":resize -2<CR>", opts)
 keymap("n", "<S-Down>", ":resize +2<CR>", opts)
@@ -66,8 +67,26 @@ end
 vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
 
+-- replace a word with yanked text
+keymap("n", "rw","viwpyiw", opts)
+-- replace till the end of line with yanked text
+-- keymap("n", "rl", 'Pl"_D', opts)
+--This unsets the "last search pattern" register by hitting enter
+keymap("n", "<CR>", ":noh <CR><CR>", opts)
 
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+
+
+
+-- keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
+
+
+vim.api.nvim_set_keymap("n", "yf", "<cmd>lua require('user.functions').copy_relative_path()<cr>", opts)
+
+
+
+
+
+-- keymap("n", "yf", lv, opts)
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -342,4 +361,9 @@ end
 lvim.builtin.telescope.defaults.pickers = get_pickers(actions)
 lvim.builtin.telescope.defaults.pickers = get_pickers(actions)
 lvim.builtin.telescope.pickers = get_pickers(actions)
+lvim.builtin.which_key.mappings["f"] = {
+  name = "File",
+  c = { "<cmd>lua require('user.functions').copy_path()<cr>", "Copy Path" },
+  C = { "<cmd>lua require('user.functions').copy_relative_path()<cr>", "Copy Relative Path" },
+}
 
