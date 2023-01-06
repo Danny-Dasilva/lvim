@@ -26,13 +26,15 @@ lvim.colorscheme = "lunar"
 lvim.leader = "\\"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-/>"] = "<Plug>(comment_toggle_linewise_current)"
-lvim.keys.visual_mode["<C-/>"] = "<Plug>(comment_toggle_linewise_visual)"
+--add comment with ctrl /
+lvim.keys.normal_mode["<C-_>"] = "<Plug>(comment_toggle_linewise_current)"
+lvim.keys.visual_mode["<C-_>"] = "<Plug>(comment_toggle_linewise_visual)"
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 
+-- keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
 keymap("n", "<C-b>", "* <Cmd>NvimTreeToggle<CR>", opts)
 --Remap splits navigation to just SHIFT+ hjkl
 keymap("n", "<S-h>", "<C-w>h", opts)
