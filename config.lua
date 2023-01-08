@@ -13,8 +13,11 @@ an executable
 reload "user.plugins"
 
 reload "user.lsp"
+
+reload "user.treesitter"
 reload "user.smoothie"
 reload "user.git"
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
@@ -156,6 +159,30 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
 }
 
+lvim.builtin.treesitter.incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<c-space>',
+      node_incremental = '<c-space>',
+      scope_incremental = '<C-l>',
+      node_decremental = '<C-h>',
+    },
+  }
+lvim.builtin.treesitter.textobjects = {
+    select = {
+      enable = true,
+      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ['aa'] = '@parameter.outer',
+        ['ia'] = '@parameter.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+      },
+ }
+}
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 
