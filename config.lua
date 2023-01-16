@@ -87,6 +87,13 @@ keymap("n", "<C-g>","<cmd>DiffviewOpen<cr>", opts)
 
 -- keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+
+-- Don't add replaced text to buffer in visual mode
+keymap("v", "p", '"_dp', opts)
+keymap("v", "P", '"_dP', opts)
 
 vim.api.nvim_set_keymap("n", "yf", "<cmd>lua require('user.functions').copy_relative_path()<cr>", opts)
 
