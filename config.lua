@@ -36,6 +36,7 @@ lvim.keys.visual_mode["<C-_>"] = "<Plug>(comment_toggle_linewise_visual)"
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
+lvim.keys.normal_mode["<C-b>"] = "<Cmd>NvimTreeToggle<CR>"
 
 -- keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
 keymap("n", "<C-b>", "* <Cmd>NvimTreeToggle<CR>", opts)
